@@ -1,0 +1,86 @@
+
+class Coffee {
+	private String cafeName;
+	private int sour;
+	private int bitter;
+	private int salty;
+	private int sweet;
+	
+	public static class Builder {
+		private String cafeName;
+		private int sour;
+		private int bitter;
+		private int salty;
+		private int sweet;
+		
+		public Builder(String cafeName) {
+			this.cafeName = cafeName;
+		}
+		
+		public Builder setSour(int sour) {
+			this.sour = sour;
+			return this;
+		}
+		
+		public Builder setBitter(int bitter) {
+			this.bitter = bitter;
+			return this;
+		}
+		
+		public Builder setSalty(int salty) {
+			this.salty = salty;
+			return this;
+		}
+		
+		public Builder setSweet(int sweet) {
+			this.sweet = sweet;
+			return this;
+		}
+		
+		public Coffee builder() {
+			return new Coffee(this);
+		}
+		
+	}
+	
+	private Coffee(Builder builder) {
+		this.cafeName = builder.cafeName;
+		this.sour = builder.sour;
+		this.bitter = builder.bitter;
+		this.salty = builder.salty;
+		this.sweet = builder.sweet;
+	}
+	
+	public String getCafeName() {
+		return this.cafeName;
+	}
+	
+	public int getSour() {
+		return this.sour;
+	}
+	
+	public int getBitter() {
+		return this.bitter;
+	}
+	
+	public int getSalty() {
+		return this.salty;
+	}
+	
+	public int getSweet() {
+		return this.sweet;
+	}
+}
+
+public class Builder_Pattern_1 {
+	public static void main(String[] args) {
+		Coffee coffee1 = new Coffee.Builder("Starbucks").setSour(1).setBitter(5).setSalty(0).setSweet(1).builder();
+		Coffee coffee2 = new Coffee.Builder("Hollys").setSour(5).setBitter(0).setSalty(0).setSweet(5).builder();
+		
+		System.out.println("나는 " + coffee1.getCafeName() + "에서 신맛:" + coffee1.getSour() + " 쓴맛:" + coffee1.getBitter() 
+		                + " 짠맛:" + coffee1.getSalty() + " 단맛:" + coffee1.getSweet() + "단계의 커피를 마실꺼야");
+		
+		System.out.println("나는 " + coffee2.getCafeName() + "에서 신맛:" + coffee1.getSour() + " 쓴맛:" + coffee1.getBitter() 
+        + " 짠맛:" + coffee1.getSalty() + " 단맛:" + coffee1.getSweet() + "단계의 커피를 마실꺼야");
+	}
+}
